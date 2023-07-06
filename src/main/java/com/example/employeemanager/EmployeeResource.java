@@ -25,7 +25,7 @@ public class EmployeeResource {
     @GetMapping("/all")
     //ResponseEntity is a class that represents the entire HTTP response, including the status code, headers, and response body. Here, the list of employees is set as the response body.
     public ResponseEntity<List<Employee>> getAllemployees() {
-        List<Employee> employees = employeeService.findAllemployees();
+        List<Employee> employees = employeeService.findAllEmployees();
         return new ResponseEntity<>(employees, HttpStatus.OK);
 
         //In HTTP, each response has a status code that indicates the outcome of the request..
