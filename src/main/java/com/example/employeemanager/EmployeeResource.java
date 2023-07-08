@@ -49,19 +49,15 @@ public class EmployeeResource {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee)
-    {
+    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
         Employee updateEmployee = employeeService.updateEmployee(employee);
         return new ResponseEntity<>(updateEmployee, HttpStatus.OK);
-
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id)
-    {
+    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>(HttpStatus.OK);
-
     }
 
 }

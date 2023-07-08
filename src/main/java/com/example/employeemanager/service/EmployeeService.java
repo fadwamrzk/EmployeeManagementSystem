@@ -25,7 +25,6 @@ public class EmployeeService {
     {
         employee.setEmployeeCode(UUID.randomUUID().toString());
         return employeeRepo.save(employee);
-
     }
 
     public List<Employee> findAllEmployees()
@@ -36,7 +35,6 @@ public class EmployeeService {
     public Employee updateEmployee(Employee employee)
     {
         return employeeRepo.save(employee);
-
     }
 
     public Employee findEmployeeById(Long id)
