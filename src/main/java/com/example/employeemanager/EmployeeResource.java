@@ -3,8 +3,8 @@ package com.example.employeemanager;
 import com.example.employeemanager.model.Employee;
 import com.example.employeemanager.service.EmployeeService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +23,8 @@ public class EmployeeResource {
     //this method returns an http response, for that we use the class ReponseEntity
     //It maps a specific URL endpoint to the annotated method, and when a GET request is made to that endpoint, the method is executed
     @GetMapping("/all")
-    //ResponseEntity is a class that represents the entire HTTP response, including the status code, headers, and response body. Here, the list of employees is set as the response body.
+    //ResponseEntity is a class that represents the entire HTTP response, including the status code, headers, and response body. Here,
+    // the list of employees is set as the response body.
     public ResponseEntity<List<Employee>> getAllemployees() {
         List<Employee> employees = employeeService.findAllEmployees();
         return new ResponseEntity<>(employees, HttpStatus.OK);
@@ -34,7 +35,8 @@ public class EmployeeResource {
     }
 
     @GetMapping("/find/{id}")
-    //ResponseEntity is a class that represents the entire HTTP response, including the status code, headers, and response body. Here, the list of employees is set as the response body.
+    //ResponseEntity is a class that represents the entire HTTP response, including the status code, headers, and response body.
+    // Here, the list of employees is set as the response body.
     public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id) {
         Employee employee = employeeService.findEmployeeById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
@@ -54,6 +56,9 @@ public class EmployeeResource {
         return new ResponseEntity<>(updateEmployee, HttpStatus.OK);
     }
 
+    //When the annotated method is called, a transaction is automatically started before the method execution and committed
+    // (or rolled back) after the method completes. This ensures that the database changes made within the method are either saved permanently or discarded.
+    @Transactional
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
         employeeService.deleteEmployee(id);
