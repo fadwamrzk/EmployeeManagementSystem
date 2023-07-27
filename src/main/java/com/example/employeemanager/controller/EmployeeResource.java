@@ -1,4 +1,4 @@
-package com.example.employeemanager;
+package com.example.employeemanager.controller;
 
 import com.example.employeemanager.model.Employee;
 import com.example.employeemanager.service.EmployeeService;
